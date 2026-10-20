@@ -97,8 +97,14 @@ def decrypt(owner: str, blob: bytes, aad: str) -> bytes:
     return AESGCM(_dek(owner)).decrypt(blob[:12], blob[12:], f"{owner}|{aad}".encode())
 
 
+def _jsonable(obj):
+    if hasattr(obj, "isoformat"):
+        return obj.isoformat()
+    raise TypeError(type(obj))
+
+
 def enc_json(owner: str, obj, aad: str) -> bytes:
-    return encrypt(owner, json.dumps(obj, ensure_ascii=False).encode("utf-8"), aad)
+    return encrypt(owner, json.dumps(obj, ensure_ascii=False, default=_jsonable).encode("utf-8"), aad)
 
 
 def dec_json(owner: str, blob: bytes | None, aad: str, default=None):
