@@ -54,7 +54,7 @@ async def lifespan(_app: FastAPI):
     if not db.one("SELECT 1 FROM audit LIMIT 1"):
         audit.record("sistema", "sistema.inicio", details={"demo": True, "synthetic": True})
     if os.environ.get("ONB_SEED", "1") == "1":
-        seed.populate(summarize=os.environ.get("ONB_SUMMARY", "template") != "llm")
+        seed.populate(summarize=os.environ.get("ONB_SUMMARY", "template") == "llm")
     yield
 
 
