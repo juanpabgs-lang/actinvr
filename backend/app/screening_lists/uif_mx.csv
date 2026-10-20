@@ -1,0 +1,5 @@
+# Lista sintética en formato de las listas de personas bloqueadas de la UIF (México).
+# Ninguna fila corresponde a una persona real. Marca: SINTETICO.
+schema: folio;nombre;primer_apellido;segundo_apellido;rfc;curp;fecha_nacimiento;tipo
+UIF-SINT-19;Elena;Vásquez;Ríos;;;1968-04-11;persona
+UIF-SINT-20;Rogelio;Mendoza;Paredes;;;1959-01-30;persona

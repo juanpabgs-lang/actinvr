@@ -1,0 +1,103 @@
+pack: MiFID-ALTERNA
+version: "2026.02"
+title: Conducta, clasificación e idoneidad
+source: Información precontractual de Alterna Inversiones y Valores, S.G.I.I.C., S.A. (febrero de 2026)
+rules:
+  - id: MIF-CL-01
+    title: Clasificación por defecto como minorista
+    cites:
+      - Ley 6/2023 arts. 192 y 193
+    when: siempre
+    client: Te tratamos como cliente minorista. Es la categoría con más protecciones. Puedes pedir otra, y te diremos qué implica perder.
+    reviewer: Clasificación inicial minorista. El cliente puede solicitar tratamiento como profesional (art. 195).
+    severity: aviso
+
+  - id: MIF-ID-01
+    title: Test de idoneidad para asesoramiento y GDC
+    cites:
+      - Ley 6/2023 art. 204
+      - Reglamento Delegado (UE) 2017/565 arts. 54 y 55
+    when: servicio_idoneidad
+    client: Para recomendarte o gestionar tu cartera necesitamos saber qué conoces, qué puedes perder y qué buscas, incluida la sostenibilidad.
+    reviewer: Sin información suficiente no se presta el servicio (art. 204.5). Declaración de idoneidad en soporte duradero antes de la operación (art. 204.6).
+    severity: bloqueante
+
+  - id: MIF-ID-02
+    title: Perfiles de inversor de Alterna
+    cites:
+      - Información precontractual de Alterna, apartado 6 (febrero 2026)
+    when: servicio_idoneidad
+    client: "Según tus respuestas te asignamos un perfil: conservador, moderado, equilibrado o agresivo, con un tope de volatilidad."
+    reviewer: |
+      Conservador: RF 70–100 %, mixtos 30–50 %, vol. máx. 4 %.
+      Moderado: RV 0–30 %, RF 70–100 %, vol. máx. 8 %.
+      Equilibrado: RV 30–70 %, RF 50–70 %, vol. máx. 12 %.
+      Agresivo: RV 70–100 %, RF 0–30 %, vol. máx. 20 %.
+    severity: aviso
+
+  - id: MIF-ID-03
+    title: Preferencias de sostenibilidad
+    cites:
+      - Reglamento Delegado (UE) 2017/565 art. 54 (mod. 2021/1253)
+      - Información precontractual de Alterna, apartado 6
+    when: servicio_idoneidad
+    client: Si quieres que la sostenibilidad cuente en las recomendaciones, lo anotamos. Si no, no es un factor.
+    reviewer: Si ningún producto cumple las preferencias, se informa y se ofrece modificar las respuestas. Queda constancia de la explicación y de la decisión.
+    severity: aviso
+
+  - id: MIF-CO-01
+    title: Test de conveniencia para RTO
+    cites:
+      - Ley 6/2023 art. 205
+    when: servicio_rto
+    client: Si solo quieres que enviemos tus órdenes, te preguntamos si conoces el producto. Si no encaja, te lo decimos por escrito.
+    reviewer: Copia de la evaluación al cliente (art. 205.3). Advertencia si no es conveniente o si falta información (arts. 205.4 y 205.5).
+    severity: aviso
+
+  - id: MIF-CO-02
+    title: Expresión manuscrita en producto complejo no conveniente
+    cites:
+      - Ley 6/2023 art. 205.6
+      - Circular CNMV 3/2013, norma 4
+    when: complejo_no_conveniente
+    client: Este producto es complejo y no se considera conveniente para ti. Si aun así quieres seguir, tienes que escribir esa frase de tu puño y letra.
+    reviewer: El documento contractual incluye, junto a la firma, la expresión manuscrita que determine la CNMV.
+    severity: bloqueante
+
+  - id: MIF-PRE-01
+    title: Información precontractual y costes
+    cites:
+      - Ley 6/2023 arts. 200 a 202
+      - Reglamento Delegado (UE) 2017/565 arts. 50 y 51
+    when: siempre
+    client: "Antes de firmar te enseñamos el contrato, los riesgos y lo que cuesta. [Importes de costes: por cargar desde el tarifario de Alterna.]"
+    reviewer: Información ex ante de costes y gastos. FOGAIN. Servicio de Atención al Cliente.
+    severity: aviso
+
+  - id: MIF-REG-01
+    title: Conservación de registros MiFID
+    cites:
+      - Reglamento Delegado (UE) 2017/565 art. 76
+    when: siempre
+    client: null
+    reviewer: Cinco años como mínimo, y hasta siete si lo pide la autoridad competente.
+    severity: aviso
+
+  - id: MIF-IA-01
+    title: Transparencia del sistema de IA
+    cites:
+      - Reglamento (UE) 2024/1689 art. 50 (aplicable desde 2 de agosto de 2026)
+      - RGPD art. 22
+    when: siempre
+    client: "En esta pantalla te ayuda un sistema de inteligencia artificial. No decide si te aceptamos: eso lo hace una persona."
+    reviewer: El modelo local redacta el resumen del revisor y responde dudas del cliente. Temperatura 0, semilla fija, huella del modelo, del prompt y de la entrada. Las obligaciones de alto riesgo (anexo III) aplican desde el 2 de diciembre de 2027 (Reglamento 2026/1744).
+    severity: aviso
+
+  - id: MIF-DIS-01
+    title: Desistimiento en contratos a distancia
+    cites:
+      - Directiva (UE) 2023/2673
+    when: contrato_distancia
+    client: Puedes desistir del contrato desde esta misma pantalla.
+    reviewer: "[España no ha publicado la transposición a 20 oct 2026. La Directiva es aplicable desde el 19 de junio de 2026. El botón se ofrece como función de la Directiva; el régimen nacional definitivo está pendiente.]"
+    severity: aviso

@@ -1,0 +1,184 @@
+pack: ES-PBC
+version: "2026.10"
+title: Prevención de blanqueo y financiación del terrorismo
+includes: Real Decreto 813/2026 (BOE 8 de octubre de 2026; vigencia 28 de octubre de 2026)
+next_pack:
+  id: AMLR
+  title: Reglamento (UE) 2024/1624 relativo a la prevención del blanqueo
+  applies: "2027-07-10"
+  note: El pack siguiente se publicará cuando Alterna y Finreg fijen los umbrales y el modelo de riesgo bajo el Reglamento.
+weights_owner: "[Los pesos del modelo de riesgo los fija Alterna con Finreg; los de esta demo son de ejemplo]"
+rules:
+  - id: PBC-ID-01
+    title: Identificación formal previa
+    cites:
+      - Ley 10/2010 art. 3
+      - RD 304/2014 art. 4 (redacción RD 813/2026)
+    when: siempre
+    client: Necesitamos tu identificación antes de abrir la cuenta.
+    reviewer: Identificación formal y comprobación de identidad previas al establecimiento de la relación.
+    severity: bloqueante
+
+  - id: PBC-ID-02
+    title: Documento fehaciente en vigor
+    cites:
+      - RD 304/2014 art. 6.1.a y 6.4
+    when: documento_identidad
+    client: El pasaporte tiene que estar vigente. Si ya caducó, súbenos uno vigente.
+    reviewer: El pasaporte es el documento fehaciente para nacionales de terceros países. El INE solo se admite de forma excepcional o como complemento (art. 6.1.a). El documento debe estar en vigor (art. 6.4).
+    severity: bloqueante
+
+  - id: PBC-ID-03
+    title: INE no sustituye al pasaporte
+    cites:
+      - RD 304/2014 art. 6.1.a
+    when: solo_ine
+    client: Para abrir la cuenta en España el documento que nos sirve es el pasaporte. La credencial INE la guardamos como complemento.
+    reviewer: "Nacional mexicano: el documento fehaciente es el pasaporte. El INE no es documento de identidad español ni de la UE."
+    severity: bloqueante
+
+  - id: PBC-ID-04
+    title: Copia en el plazo de un mes
+    cites:
+      - Ley 10/2010 art. 12
+      - RD 304/2014 art. 21.1
+    when: no_presencial
+    client: Conservamos copia de tus documentos. Si falta alguno, te lo pedimos antes de un mes.
+    reviewer: En no presencial hay que obtener copia de los documentos de diligencia debida en el plazo de un mes desde el inicio de la relación.
+    severity: aviso
+
+  - id: PBC-ID-05
+    title: Discrepancia obliga a identificación presencial
+    cites:
+      - Ley 10/2010 art. 12
+    when: discrepancia_identidad
+    client: Hay una diferencia entre lo que nos dijiste y lo que leímos en el documento. Para seguir, la identificación tiene que ser presencial.
+    reviewer: Si hay discrepancias entre los datos del cliente y otra información accesible, es preceptiva la identificación presencial.
+    severity: bloqueante
+
+  - id: PBC-NP-01
+    title: Primer ingreso desde cuenta propia en país equivalente
+    cites:
+      - Ley 10/2010 art. 12.1.b
+      - RD 304/2014 art. 21.1.c
+      - Acuerdo de 17 de julio de 2012 (BOE-A-2012-11091)
+    when: ruta_primer_ingreso
+    client: El primer ingreso tiene que salir de una cuenta a tu nombre en un banco de México, de la UE o de España.
+    reviewer: "México figura en la lista de terceros países equivalentes (Acuerdo 17/07/2012). [Vigencia actual de esa lista: verificar ante SEPBLAC; no hay actualización publicada que la derogue a 20 oct 2026.] Titularidad de la cuenta de origen y coincidencia del nombre son condiciones de la vía."
+    severity: bloqueante
+
+  - id: PBC-NP-02
+    title: Videoidentificación autorizada por SEPBLAC
+    cites:
+      - RD 304/2014 art. 21.1.d (redacción RD 813/2026)
+    when: ruta_video
+    client: Si no usas el primer ingreso, te identificamos por videollamada con un proveedor autorizado.
+    reviewer: El procedimiento debe cumplir los requisitos mínimos de las autorizaciones generales de SEPBLAC. Esta demo simula el proveedor; no hay captura de cámara.
+    severity: aviso
+
+  - id: PBC-NP-03
+    title: Firma electrónica cualificada
+    cites:
+      - Ley 10/2010 art. 12.1.a
+      - Reglamento (UE) 910/2014
+    when: ruta_qeas
+    client: Una firma electrónica cualificada también sirve para identificarte a distancia.
+    reviewer: Con firma cualificada no es preceptiva la copia del documento; sí la conservación de los datos que acrediten el procedimiento.
+    severity: aviso
+
+  - id: PBC-TR-01
+    title: Titular real
+    cites:
+      - Ley 10/2010 art. 4
+      - RD 304/2014 arts. 8 y 9
+    when: siempre
+    client: Confirma que actúas por tu cuenta. Si no, dinos quién es el titular real.
+    reviewer: "Personas físicas: el propio cliente es el titular real salvo indicación en contrario. Declaración recabada y registrada."
+    severity: bloqueante
+
+  - id: PBC-PR-01
+    title: Propósito e índole de la relación
+    cites:
+      - Ley 10/2010 art. 5
+      - RD 304/2014 art. 10
+    when: siempre
+    client: Cuéntanos para qué quieres la cuenta y a qué te dedicas.
+    reviewer: Actividad declarada registrada antes del inicio. Comprobación documental exigible si el riesgo es superior al promedio (art. 10.2).
+    severity: bloqueante
+
+  - id: PBC-OR-01
+    title: Origen de los fondos
+    cites:
+      - RD 304/2014 art. 20.1.c
+    when: riesgo_alto_o_importe
+    client: Necesitamos un documento que explique de dónde sale el dinero (nómina, venta, herencia, ahorro).
+    reviewer: "Medida reforzada cuando el riesgo es superior al promedio o el importe inicial es elevado. Umbral de esta demo: 100.000 EUR. [Umbral definitivo: Alterna / Finreg.]"
+    severity: bloqueante
+
+  - id: PBC-PEP-01
+    title: Personas con responsabilidad pública
+    cites:
+      - Ley 10/2010 art. 14.5 y 14.9
+    when: pep
+    client: "Si tú, tu pareja, tus padres o tus hijos tienen o han tenido un cargo público importante, dínoslo. No cierra la cuenta: cambia el nivel de revisión."
+    reviewer: Autorización del inmediato nivel directivo como mínimo; origen del patrimonio y de los fondos; seguimiento reforzado. Se mantiene dos años después de dejar el cargo. Familiares y allegados incluidos (art. 14.6).
+    severity: bloqueante
+
+  - id: PBC-SAN-01
+    title: Contrastación de sanciones y contramedidas
+    cites:
+      - Ley 10/2010 art. 42
+      - RD 304/2014 art. 31.1 (redacción RD 813/2026)
+    when: siempre
+    client: Comparamos tu nombre con las listas de sanciones. Si hay un parecido, una persona lo revisa.
+    reviewer: "Políticas escritas de sanciones y contramedidas (art. 31.1 RD 813/2026). Listas de esta instalación: UE FSF, ONU, OFAC SDN y UIF (formato), todas sintéticas. Un candidato no se descarta solo por el nombre; hace falta fecha de nacimiento o nacionalidad."
+    severity: bloqueante
+
+  - id: PBC-SAN-02
+    title: Análisis de riesgo incluye elusión de sanciones
+    cites:
+      - RD 304/2014 art. 32.1 (redacción RD 813/2026)
+    when: siempre
+    client: null
+    reviewer: El análisis de riesgo debe incorporar el análisis nacional, el de la UE, los sectoriales y la información sobre elusión de sanciones.
+    severity: aviso
+
+  - id: PBC-CON-01
+    title: Conservación diez años y acceso restringido a los cinco
+    cites:
+      - Ley 10/2010 art. 25
+      - RD 304/2014 art. 28.1 (redacción RD 813/2026)
+    when: siempre
+    client: Guardamos tu expediente diez años desde que se cierre la relación. A los cinco, solo lo ven control interno y defensa legal.
+    reviewer: Integridad, imposibilidad de manipulación, localización. Tras diez años, eliminación.
+    severity: aviso
+
+  - id: PBC-DAT-01
+    title: Información previa y base jurídica PBC
+    cites:
+      - Ley 10/2010 art. 32 bis
+      - RGPD arts. 13 y 14
+      - LOPDGDD art. 11
+    when: siempre
+    client: Usamos tus datos para cumplir la ley de prevención de blanqueo. Eso no depende de que nos des permiso. Tienes derecho a no ser objeto de una decisión automática.
+    reviewer: Tratamiento amparado por art. 6.1.c RGPD / art. 8.1 LOPDGDD. Evaluación de impacto exigida. Trazabilidad de accesos.
+    severity: bloqueante
+
+  - id: PBC-DAT-02
+    title: Prohibición de revelación
+    cites:
+      - Ley 10/2010 art. 24
+    when: examen_especial
+    client: null
+    reviewer: No se informa al cliente de que se examina o se ha comunicado una operación. Esta demo no simula comunicaciones a SEPBLAC.
+    severity: aviso
+
+  - id: PBC-DIR-01
+    title: Diligencia incompleta al inicio
+    cites:
+      - Ley 10/2010 art. 7.3
+      - RD 304/2014 art. 12.2 (redacción RD 813/2026)
+    when: diligencia_incompleta
+    client: null
+    reviewer: Si no se completan las medidas al inicio, valorar comunicación por indicio previa realización del examen especial (art. 17 Ley 10/2010). No se revela al cliente.
+    severity: aviso

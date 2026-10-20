@@ -1,0 +1,5 @@
+# Lista sintética en formato de la Lista Consolidada del Consejo de Seguridad de la ONU.
+# Ninguna fila corresponde a una persona real. Marca: SINTETICO.
+schema: dataid;first_name;second_name;third_name;un_list_type;reference_number;listed_on;nationality;date_of_birth
+SINT-UN-77;Karim;Al-Farsi;;SINTETICO;SINT.UN.77;2019-03-14;IR;1964-12-02
+SINT-UN-78;Elena;Vasquez;Rios;SINTETICO;SINT.UN.78;2021-08-09;MX;1968-04-11

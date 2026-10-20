@@ -1,0 +1,6 @@
+# Lista sintética en formato de la Specially Designated Nationals List (OFAC).
+# Ninguna fila corresponde a una persona real. Marca: SINTETICO.
+schema: ent_num;sdn_name;sdn_type;program;title;call_sign;vess_type;tonnage;grt;vess_flag;vess_owner;remarks
+900001;"VASQUEZ RIOS, Elena";individual;SINTETICO-SDN;;;;; ; ; ;DOB 11 Apr 1968; nationality Mexico; SINTETICO.
+900002;"PETROV, Nikolai";individual;SINTETICO-SDN;;;;; ; ; ;DOB 03 Sep 1971; nationality Russia; SINTETICO.
+900003;"BALTIC FICTITIOUS HOLDING SA";entity;SINTETICO-SDN;;;;; ; ; ;Estonia; SINTETICO.

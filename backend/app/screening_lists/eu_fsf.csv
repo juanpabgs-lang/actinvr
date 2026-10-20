@@ -1,0 +1,6 @@
+# Lista sintética en formato del Mapa de Sanciones Financieras de la UE (FSF).
+# Ninguna fila corresponde a una persona real. Marca: SINTETICO.
+schema: nombre;apellidos;alias;fecha_nacimiento;nacionalidad;tipo;programa;referencia
+Elena;Vásquez Ríos;La Contadora;1968-04-11;MX;persona;SINTETICO-UE-2026;UE-SINT-0041
+Nikolai;Petrov;;1971-09-03;RU;persona;SINTETICO-UE-2026;UE-SINT-0042
+Holding Ficticio del Báltico S.A.;;; ;EE;entidad;SINTETICO-UE-2026;UE-SINT-0108

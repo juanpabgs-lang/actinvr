@@ -1,0 +1,5 @@
+# Relación sintética de personas con responsabilidad pública, para la demo.
+# Ninguna fila corresponde a una persona real. Marca: SINTETICO.
+schema: nombre;cargo;jurisdiccion;desde;hasta;familiares
+Luis Alberto;Ramos Delgado;ex diputado federal;MX;2018-09-01;2024-08-31;Ana Ramos Soto (cónyuge)
+María;Ibarra Fuentes;directora general de organismo público;MX;2022-01-15;;
