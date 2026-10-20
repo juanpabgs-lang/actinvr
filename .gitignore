@@ -1,0 +1,17 @@
+# Python
+backend/.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Runtime data: encrypted vault, keys, database, generated samples and exports
+backend/var/
+
+# Node
+frontend/node_modules/
+frontend/dist/
+
+# QA output
+qa/output/
+
+.DS_Store

@@ -1,0 +1,14 @@
+# Direct dependencies (pinned). Full resolved set: requirements.lock
+fastapi==0.156.2
+uvicorn==0.54.0
+python-multipart==0.0.32
+cryptography==50.0.2
+rapidfuzz==3.14.6
+python-stdnum==2.2
+pillow==13.0.0
+pypdf==6.21.1
+reportlab==5.0.1
+PyYAML==6.0.3
+httpx==0.28.1
+tzdata==2026.5
+pytest==9.1.1
