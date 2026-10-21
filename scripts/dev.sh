@@ -11,7 +11,7 @@ if ! curl -sf "http://127.0.0.1:11434/api/version" >/dev/null; then
 fi
 
 cd "$ROOT/backend"
-.venv/bin/uvicorn app.main:app --host 127.0.0.1 --port 8013 --reload &
+.venv/bin/uvicorn app.main:app --host 0.0.0.0 --port 8013 --reload &
 API=$!
 trap 'kill $API' EXIT
 cd "$ROOT/frontend"

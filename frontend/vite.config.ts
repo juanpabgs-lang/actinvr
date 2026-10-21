@@ -28,7 +28,7 @@ const securityHeaders = {
 
 export default defineConfig({
   plugins: [react()],
-  server: { host: "127.0.0.1", port: 5173, strictPort: true, proxy: api },
-  preview: { host: "127.0.0.1", port: 5173, strictPort: true, proxy: api, headers: securityHeaders },
+  server: { host: "0.0.0.0", port: 5173, strictPort: true, proxy: api, allowedHosts: true },
+  preview: { host: "0.0.0.0", port: 5173, strictPort: true, proxy: api, headers: securityHeaders, allowedHosts: true },
   build: { sourcemap: false, assetsInlineLimit: 0 },
 });

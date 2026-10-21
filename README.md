@@ -23,8 +23,9 @@ cd frontend && npm ci && cd ..
 ./scripts/dev.sh
 ```
 
-- Cliente, mesa y cumplimiento: [http://127.0.0.1:5173](http://127.0.0.1:5173)
+- Cliente, mesa y cumplimiento: [http://127.0.0.1:5173](http://127.0.0.1:5173) (en un agente Cursor: icono de puertos → **5173**, o `http://localhost:5173` si el auto-forward ya está)
 - API: [http://127.0.0.1:8013](http://127.0.0.1:8013)
+- Ambos escuchan en `0.0.0.0` para que Cursor los reenvíe. No abras `8013` en el navegador: la web usa `/api` por el proxy.
 - Vista servida con CSP estricta: `cd frontend && npm run demo`
 
 La guardia de red del proceso solo deja hablar con el bucle local y con Ollama. Eso no sustituye el cortafuegos del anfitrión; ver [deploy/nftables-egress.conf](deploy/nftables-egress.conf).
